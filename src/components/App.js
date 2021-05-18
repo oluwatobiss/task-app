@@ -1,18 +1,19 @@
 import React, {Component} from "react";
 import ListMaker from "./ListMaker";
+import uniqid from "uniqid";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      task: {input: ""},
+      task: {input: "", id: uniqid()},
       tasks: []
     };
   }
 
   handleChange = (e) => {
     const {name, value} = e.target
-    this.setState({[name]: {input: value}});
+    this.setState({[name]: {input: value, id: this.state.task.id}});
   }
 
   handleSubmit = (e) => {
@@ -20,7 +21,7 @@ class App extends Component {
     this.setState((curr) => {
       const currentState = {...curr};
       const newTask = [...currentState.tasks, this.state.task];
-      return {task: {input: ""}, tasks: newTask};
+      return {task: {input: "", id: uniqid()}, tasks: newTask};
     })
   }
 

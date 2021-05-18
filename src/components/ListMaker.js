@@ -1,6 +1,6 @@
 function ListMaker(props) {
-  return props.items.map((item, index) => {
-    return <li key={index}>{item.input}</li>;
+  return props.items.map((item) => {
+    return <li key={item.id}>{item.input}</li>;
   })
 }
 
